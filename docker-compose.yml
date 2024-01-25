@@ -1,8 +1,26 @@
 version: "3"
 
+volumes:
+  db_data:
+
 services:
+  mariadb:
+    container_name: mariadb
+    restart: always
+    build:
+      dockerfile: ./docker/mariadb/Dockerfile
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./config/mariadb/my.cnf:/etc/mysql/mariadb.conf.d/mysqld.cnf
+      - ./config/mariadb//docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   wordpress:
-    privileged: true
     container_name: wordpress
     build:
       dockerfile: ./docker/wordpress/Dockerfile

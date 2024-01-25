@@ -8,3 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Added:
 - Added structure of the projects.
+
+## [0.2.0] - 25.01.2023
+
+Added:
+- Docker - Added Mariadb version 11.2 Stable.
