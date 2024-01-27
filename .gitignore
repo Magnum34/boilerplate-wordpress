@@ -104,6 +104,7 @@ ehthumbs_vista.db
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+.env
 
 # Windows Installer files
 *.cab
@@ -116,3 +117,8 @@ $RECYCLE.BIN/
 *.lnk
 
 **/temp/*
+
+/certs/development/*
+!/certs/development/.gitignore
+/certs/production/*
+!/certs/production/.gitignore

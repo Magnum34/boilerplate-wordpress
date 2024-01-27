@@ -13,3 +13,12 @@ Added:
 
 Added:
 - Docker - Added Mariadb version 11.2 Stable.
+
+## [0.3.0] - 27.01.2023
+
+Added:
+- Added README.md
+- Docker - Added Certbot is EFF's tool to obtain certs from Let's Encrypt and (optionally) auto-enable HTTPS on your server. It can also act as a client for any other CA that uses the ACME protocol.
+- Docker - Added PHP version 8.3.
+- Added file Makefile is suited to compress the basic docker commands for building and running containers.
+- Added scripts to docker.

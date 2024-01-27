@@ -51,7 +51,7 @@ USER www-data
 COPY --chown=www-data /apps /var/www/html
 
 
-EXPOSE 8080
+EXPOSE 80 443
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 

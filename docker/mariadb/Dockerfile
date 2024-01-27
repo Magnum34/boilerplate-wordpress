@@ -13,7 +13,7 @@ ENV MARIADB_VERSION $MARIADB_VERSION
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r mysql && useradd -r -g mysql mysql --home-dir /var/lib/mysql
-RUN mkdir /docker-entrypoint-initdb.d
+RUN mkdir /docker-entrypoint-initdb.d && mkdir -p /var/mariadb/backup/
 
 
 RUN set -eux; \
@@ -58,7 +58,7 @@ RUN set -eux; \
 	gosu nobody true
 
 RUN curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=$MARIADB_VERSION
-RUN apt-get update && apt-get install -y --no-install-recommends mariadb-server mariadb-backup socat
+RUN apt-get update && apt-get install -y --no-install-recommends mariadb-server mariadb-backup mariadb-client mariadb-common socat
 RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql /run/mysqld && chown -R mysql:mysql /var/lib/mysql /run/mysqld && chmod 1777 /run/mysqld
 
 VOLUME /var/lib/mysql
