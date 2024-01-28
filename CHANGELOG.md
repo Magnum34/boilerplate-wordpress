@@ -33,3 +33,7 @@ Added:
 FIXED:
 - Mariadb - Unable to connect to remote host: Connection refused
 
+## [1.0.0] - 28.01.2023
+
+Added:
+- Added wordpress.
