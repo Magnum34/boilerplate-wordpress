@@ -17,10 +17,18 @@ help:
 	@echo '  mariadb_shell connect with database'
 	@echo '  wordpress_shell shell to application wordpress'
 
+init_env:
+	cp .env.example .env
+
+init: init_env build run wordpress_install
+	echo "Done"
+
 build:
 	bash  ./scripts/build.sh
+
 rebuild:
 	docker-compose -f ./docker-compose.yml build --no-cache certbot mariadb wordpress
+
 run:
 	bash  ./scripts/run.sh
 
