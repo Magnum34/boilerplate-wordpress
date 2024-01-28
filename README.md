@@ -33,6 +33,7 @@ make help
 #  mariadb_export export database
 #  mariadb_shell connect with database
 #  wordpress_shell shell to application wordpress
+#  wordpress_install install wordpress
 
 
 ```

@@ -42,5 +42,8 @@ mariadb_export:
 wordpress_shell:
 	bash ./scripts/shell-wordpress.sh
 
+wordpress_install:
+	bash ./scripts/install-wordpress.sh
+
 logs:
 	bash ./scripts/logs.sh
