@@ -27,3 +27,9 @@ Added:
 
 Added:
 - Added getcomposer - https://getcomposer.org/
+
+## [0.3.1] - 28.01.2023
+
+FIXED:
+- Mariadb - Unable to connect to remote host: Connection refused
+

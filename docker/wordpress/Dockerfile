@@ -6,7 +6,7 @@ ENV TZ=Europe/Warsaw
 
 
 # nginx
-RUN apt-get update && apt-get install -y curl zip unzip procps telnet monit supervisor gnupg2 ca-certificates lsb-release ubuntu-keyring ca-certificates software-properties-common && \
+RUN apt-get update && apt-get install -y  curl zip unzip procps  telnet dnsutils monit supervisor gnupg2 ca-certificates lsb-release ubuntu-keyring ca-certificates software-properties-common && \
   curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
   | tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null &&  \
   gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg && \
