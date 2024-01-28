@@ -37,3 +37,9 @@ FIXED:
 
 Added:
 - Added wordpress.
+
+## [1.0.1] - 28.01.2023
+
+Fixed:
+- fixed install wordpress.
+- fixed file Makefile

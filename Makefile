@@ -1,7 +1,9 @@
 #!make
-include .env
-NOW_DATE=$(shell date +'%y%m%d-%H%M')
-BACKUP_FULLNAME="${DATABASE_NAME}-${NOW_DATE}.sql"
+ifneq (,$(wildcard ./.env))
+	include .env
+	NOW_DATE=$(shell date +'%y%m%d-%H%M')
+	BACKUP_FULLNAME="${DATABASE_NAME}-${NOW_DATE}.sql"
+endif
 
 help:
 	@echo ''
