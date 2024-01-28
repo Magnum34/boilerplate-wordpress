@@ -50,6 +50,7 @@ services:
     volumes:
       - ./certs/development:/etc/nginx/ssl/
       - ./config/nginx/conf.d:/etc/nginx/conf.d/
+      - ./apps:/var/www/html
     ports:
       - 80:80
       - 443:443

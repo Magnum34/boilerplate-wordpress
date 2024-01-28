@@ -22,3 +22,8 @@ Added:
 - Docker - Added PHP version 8.3.
 - Added file Makefile is suited to compress the basic docker commands for building and running containers.
 - Added scripts to docker.
+
+## [0.3.0] - 28.01.2023
+
+Added:
+- Added getcomposer - https://getcomposer.org/

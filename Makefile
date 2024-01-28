@@ -20,7 +20,7 @@ help:
 build:
 	bash  ./scripts/build.sh
 rebuild:
-	docker-compose -f ./docker-compose.yml --no-cache build certbot mariadb wordpress
+	docker-compose -f ./docker-compose.yml build --no-cache certbot mariadb wordpress
 run:
 	bash  ./scripts/run.sh
 
