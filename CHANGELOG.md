@@ -54,3 +54,8 @@ FIXED:
 
 UPDATE:
 - .env.example
+
+## [1.0.3] - 30.01.2023
+
+UPDATE:
+- Set Up Nginx with HTTP/2 Support

@@ -21,6 +21,7 @@ help:
 	@echo '  wordpress_shell shell to application wordpress'
 	@echo '  wordpress_install Wordpress installation'
 
+
 init_env:
 	cp .env.example .env
 
