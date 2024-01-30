@@ -58,7 +58,7 @@ RUN set -eux; \
 	gosu nobody true
 
 RUN curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=$MARIADB_VERSION
-RUN apt-get update && apt-get install -y --no-install-recommends mariadb-server mariadb-backup mariadb-client mariadb-common socat
+RUN apt-get update && apt-get install -y --no-install-recommends mariadb-server mariadb-backup mariadb-client mariadb-common socat && rm -rf /var/lib/apt/lists/* && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
 RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql /run/mysqld && chown -R mysql:mysql /var/lib/mysql /run/mysqld && chmod 1777 /run/mysqld
 RUN find /etc/mysql/ -name '*.cnf' -print0 | xargs -0 grep -lZE '^(bind-address|log|user\s)' | xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/';
 

@@ -9,6 +9,7 @@ help:
 	@echo ''
 	@echo 'Usage: make [TARGET]'
 	@echo 'Targets:'
+	@echo '  init   quick creation of a development environment'
 	@echo '  build    build images'
 	@echo '  rebuild  rebuild images'
 	@echo '  run      run all containers'
@@ -18,6 +19,7 @@ help:
 	@echo '  mariadb_export export database'
 	@echo '  mariadb_shell connect with database'
 	@echo '  wordpress_shell shell to application wordpress'
+	@echo '  wordpress_install Wordpress installation'
 
 init_env:
 	cp .env.example .env

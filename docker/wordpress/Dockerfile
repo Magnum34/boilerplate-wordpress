@@ -12,10 +12,7 @@ RUN apt-get update && apt-get install -y  curl zip unzip procps  telnet dnsutils
   gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg && \
   echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
   http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
-  |  tee /etc/apt/sources.list.d/nginx.list && apt update && apt install nginx
-
-COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY config/nginx/conf.d /etc/nginx/conf.d/
+  |  tee /etc/apt/sources.list.d/nginx.list && apt update && apt install nginx && rm -rf /var/lib/apt/lists/* && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
 
 # PHP
 RUN add-apt-repository -y ppa:ondrej/php && apt-get update && \
@@ -35,23 +32,31 @@ RUN add-apt-repository -y ppa:ondrej/php && apt-get update && \
   php8.3-gd \
   php8.3-mysql \
   php8.3-imagick \
-  php8.3-xmlrpc
-
-COPY config/php/php.ini /etc/php83/conf.d/custom.ini
-COPY config/php/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
+  php8.3-xmlrpc && \
+  rm -rf /var/lib/apt/lists/* && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false;
 
 # composer
 RUN HASH=`curl -sS https://composer.github.io/installer.sig` && curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php && \
   php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
   php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-COPY config/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 WORKDIR /var/www/html
 
 # Make sure files/folders needed by the processes are accessable when they run under the www-data user
 RUN chown -R www-data:www-data /var/www/html /run  /var/log /var/www
 USER www-data
+
+# Configuration Nginx
+COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY config/nginx/conf.d /etc/nginx/conf.d/
+
+# Configuration PHP
+COPY config/php/php.ini /etc/php83/conf.d/custom.ini
+COPY config/php/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
+
+# Configuration supervisor
+COPY config/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # COPY application
 COPY --chown=www-data /apps /var/www/html

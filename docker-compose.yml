@@ -11,6 +11,7 @@ services:
   mariadb:
     container_name: mariadb
     restart: always
+    image: mariadb:11.2
     build:
       dockerfile: ./docker/mariadb/Dockerfile
     environment:
@@ -29,6 +30,7 @@ services:
       - ./config/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   certbot:
     container_name: certbot
+    image: certbot:${VERSION}
     build:
       dockerfile: ./docker/certbot/Dockerfile
     environment:
@@ -39,6 +41,7 @@ services:
       - ./certs/development:/var/www/localhost
   wordpress:
     container_name: wordpress
+    image: wordpress:${VERSION}
     build:
       dockerfile: ./docker/wordpress/Dockerfile
       context: ./

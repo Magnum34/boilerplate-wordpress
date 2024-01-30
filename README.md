@@ -55,3 +55,20 @@ AUTH_KEY, SECURE_AUTH_KEY, LOGGED_IN_KEY, NONCE_KEY, AUTH_SALT, SECURE_AUTH_SALT
 - Add theme(s) in web/app/themes/ as you would for a normal WordPress site
 - Set the document root on your webserver to Bedrock's web folder: /path/to/site/web/
 - Access WordPress admin at https://example.com/wp/wp-admin/
+
+## Quick start
+
+1. Clone this repo using
+```
+git clone https://github.com/Magnum34/boilerplate-wordpress.git
+cd boilerplate-wordpress
+```
+
+2. Run
+```
+make init
+```
+Please configure the file   ./apps/bedrock/.env more info https://roots.io/bedrock/docs/installation/
+
+
+
