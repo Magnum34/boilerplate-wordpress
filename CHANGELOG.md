@@ -59,3 +59,8 @@ UPDATE:
 
 UPDATE:
 - Set Up Nginx with HTTP/2 Support
+
+## [1.0.4] - 04.02.2023
+
+UPDATE:
+- README.md

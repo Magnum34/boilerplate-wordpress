@@ -39,13 +39,13 @@ make help
 ```
 ## Getting Started - Wordpress
 
-- Create a /apps/bedrock/.env file with the following environment variables (see .env.example as an example):
+- Create a /apps/bedrock/.env file with the following environment variables (see /app/bedrock/.env.example as an example):
   - Database variables
-  - DB_NAME - Database name
-  - DB_USER - Database user
-  - DB_PASSWORD - Database password
-  - DB_HOST - Database host
-  - Optionally, you can define DATABASE_URL for using a DSN instead of using the variables above (e.g. mysql://user:password@127.0.0.1:3306/db_name)
+    - DB_NAME - Database name
+    - DB_USER - Database user
+    - DB_PASSWORD - Database password
+    - DB_HOST - Database host
+    - Optionally, you can define DATABASE_URL for using a DSN instead of using the variables above (e.g. mysql://user:password@127.0.0.1:3306/db_name)
 - WP_ENV - Set to environment (development, staging, production)
 - WP_HOME - Full URL to WordPress home (https://example.com)
 - WP_SITEURL - Full URL to WordPress including subdirectory (https://example.com/wp)
@@ -55,6 +55,23 @@ AUTH_KEY, SECURE_AUTH_KEY, LOGGED_IN_KEY, NONCE_KEY, AUTH_SALT, SECURE_AUTH_SALT
 - Add theme(s) in web/app/themes/ as you would for a normal WordPress site
 - Set the document root on your webserver to Bedrock's web folder: /path/to/site/web/
 - Access WordPress admin at https://example.com/wp/wp-admin/
+
+## Getting Started - docker-compose
+Create a .env file with the following environment variables (see .env.example as an example):
+
+```
+
+### DATABASE
+DATABASE_NAME='wordpress' #  Database name
+DATABASE_USER='wordpress' #  Database user
+DATABASE_PASSWORD='wordpress' # Database password
+DATABASE_ROOT_PASSWORD='rootpass' # Database root password
+MARIADB_PORT=3306 # Database port
+
+## GLOBAL
+VERSION="1.0.3" # docker image tag
+
+```
 
 ## Quick start
 
@@ -69,6 +86,3 @@ cd boilerplate-wordpress
 make init
 ```
 Please configure the file   ./apps/bedrock/.env more info https://roots.io/bedrock/docs/installation/
-
-
-
