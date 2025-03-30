@@ -64,3 +64,7 @@ UPDATE:
 
 UPDATE:
 - README.md
+
+## [1.0.5] - 30.03.2025
+UPDATE:
+- nginx
